@@ -1,18 +1,48 @@
 extends layout
 
 block content
-   main.form-signin.w-100.m-auto
-      form.form-login
-        h1.h3.mb-3.fw-normal Please sign in
-        .form-floating
-          input#floatingInput.form-control(type='email' placeholder='name@example.com')
-          label(for='floatingInput') Email address
-        .form-floating
-          input#floatingPassword.form-control(type='password' placeholder='Password')
-          label(for='floatingPassword') Password
-        .form-check.text-start.my-3
-          input#flexCheckDefault.form-check-input(type='checkbox' value='remember-me')
-          label.form-check-label(for='flexCheckDefault')
-            | Remember me
-        a.btn.btn-primary.w-100.py-2(href='/') Sign in
-        p.mt-5.mb-3.text-body-secondary © 2023
+  script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11") 
+  script(type='text/javascript').
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timerProgressBar: false,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    function login() {
+      var user = document.getElementById("username").value;
+      var pass = document.getElementById("password").value;
+      if(user == "user@test.com" && pass == "12345") {
+          Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+          })
+          window.location.replace("/store");  
+          return false;
+      } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Wrong user/pass',
+          })
+          return false;
+          }
+    }
+  main.form-signin.w-100.m-auto
+    form.form-login
+      h1.h3.mb-3.fw-normal Please sign in
+      .form-floating
+        input#username.form-control(type='email' placeholder='name@example.com')
+        label(for='username') Email address
+      .form-floating
+        input#password.form-control(type='password' placeholder='Password')
+        label(for='password') Password
+      .form-check.text-start.my-3
+        input#flexCheckDefault.form-check-input(type='checkbox' value='remember-me')
+        label.form-check-label(for='flexCheckDefault')
+          | Remember me
+      button.btn.btn-primary.w-100.py-2(onclick="login()" type='button') Sign in
+      p.mt-5.mb-3.text-body-secondary © 2023
