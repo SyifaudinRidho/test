@@ -4,7 +4,7 @@ var router = express.Router();
 const storeController = require("../controller/UsersController");
 
 /* GET login page. */
-router.get('/login', function(req, res) {
+router.get('/', function(req, res) {
   res.render('login', { title: 'Login', email: 'user@gmail.com', pass:'12345678'});
 });
 
