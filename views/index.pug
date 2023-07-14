@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  //- dadd
+  nav.navbar.navbar-expand-md.navbar-dark.bg-dark.mb-4
+    .container-fluid
+      a.navbar-brand(href='/') Navbar
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarCollapse.collapse.navbar-collapse
+        ul.navbar-nav.me-auto.mb-2.mb-md-0
+          li.nav-item
+            a.nav-link.active(aria-current='page' href='#') Home
+        .d-flex 
+          a.button.btn.btn-outline-danger(aria-current='page' href='/login') Log-out
+  main.container
+    .bg-body-tertiary.p-5.rounded
+      table#mytable.table.table-striped.table-bordered
+        thead
+          tr 
+            th Number
+            th Username
+            th firstname
+            th lastname
+        tbody
+            tr 
+              td 1
+              td firmanridho@gmail.com
+              td firman
+              td ridho
